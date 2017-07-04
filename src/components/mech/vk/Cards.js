@@ -16,6 +16,7 @@ class Cards extends PureComponent {
     return str;
   }
 
+  // depend on GET_OFFSET_PEOPLE_SUCCESS
   offsetHadnler = (e) => {
     e.preventDefault();
     const { filter, offsetPeople, offsetNum } = this.props;
@@ -37,7 +38,7 @@ class Cards extends PureComponent {
       return (
         <section className={css(cards.cardsWrapper)}>
           <div>
-            <h1>Count: {people.length}</h1>
+            <h1 className={css(cards.countTitle)}>Humans current count: {people.length}</h1>
           </div>
           <div className={css(cards.cards)}>
             { people.map(person => (
@@ -52,7 +53,7 @@ class Cards extends PureComponent {
             ))}
           </div>
           <div className={css(cards.btnMoreWrapper)}>
-            <button className={css(cards.btnMore)} onClick={this.offsetHadnler}>More</button>
+            <button className={css(cards.btnMore)} onClick={this.offsetHadnler}>More humans</button>
           </div>
         </section>
       )

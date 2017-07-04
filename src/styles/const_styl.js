@@ -31,8 +31,11 @@ export const appBg = bgYellow;
 //cards
 export const cardsBg = yellow;
 export const loadingColor = teal;
-export const btnMoreBg = teal;
-export const btnMoreColor = white;
+export const btnMoreColor = black;
+export const btnMoreBgHover = teal;
+export const btnColorHover = white;
+export const countColor = black;
+export const countBg = 'transparent';
 
 //card
 export const removeColor = red;
@@ -50,7 +53,6 @@ export const hoverColor = white;
 export const reqBg = yellow;
 export const borderReqHover = teal;
 export const borderReq = black;
-
 
 //logs
 export const logWiner = teal;

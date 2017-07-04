@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { changeCount, changeAgeFrom, changeAgeTo, changeGender } from '../../../actions/filter_actions'
+import { changeCount, changeAgeFrom, changeAgeTo, changeGender, changeCountry, changeCity } from '../../../actions/filter_actions'
 import { getPeople, setOffset } from '../../../actions/people_actions'
-
+import { getCountries, getCities } from '../../../actions/vkdb_actions'
 
 import { css } from 'aphrodite/no-important'
 import filters from '../../../styles/vk/filters_styl'
 
 class Filters extends Component {
+  componentDidMount() {
+    this.props.getCountries();
+  }
 
   changeCountHandler = (e) => {
     const count = Number(e.target.value) || '';
@@ -45,7 +48,7 @@ class Filters extends Component {
   }
 
   genderHandler = (e) => {
-    console.log(e.target.parentNode.children);
+    // console.log(e.target.parentNode.children);
     const gender = Number(e.target.dataset.gender);
     const { filter, changeGender, getPeople } = this.props;
 
@@ -70,6 +73,36 @@ class Filters extends Component {
     return currentGender === 1;
   }
 
+  changeCountryHandler = (e) => {
+    const { filter, countries, changeCountry, getPeople } = this.props;
+    const currentCountry = e.target.value.toUpperCase();
+    countries.forEach(country => {
+      if(country.title.toUpperCase() === currentCountry) {
+        changeCountry(country.cid);
+        setTimeout(() => {
+          getPeople({ ...filter, country: country.cid });
+        }, 1000);
+      }
+
+    });
+  }
+
+  changeCityHandler = (e) => {
+    const { filter, cities ,changeCity, getPeople, getCities } = this.props;
+    const currentCity = e.target.value.toUpperCase();
+    getCities(filter.country, currentCity);
+    if(cities && cities[0]) {
+      cities.forEach(city => {
+        if(city.title.toUpperCase() === currentCity) {
+          changeCity(city.cid);
+          setTimeout(() => {
+            getPeople({ ...filter, city: city.cid });
+          }, 1000);
+        }
+      });
+    }
+
+  }
 
   render() {
     const { filter } = this.props;
@@ -77,11 +110,11 @@ class Filters extends Component {
       <div className={css(filters.filters)}>
         <div className={css(filters.formControl)}>
           <label className={css(filters.labelControl)} htmlFor="country">Страна:</label>
-          <input className={css(filters.inputControl)} type="text" id='country'/>
+          <input className={css(filters.inputControl)} type="text" id='country' onChange={this.changeCountryHandler}/>
         </div>
         <div className={css(filters.formControl)}>
           <label className={css(filters.labelControl)} htmlFor="city">Город:</label>
-          <input className={css(filters.inputControl)} type="text" id='city'/>
+          <input className={css(filters.inputControl)} type="text" id='city' onChange={this.changeCityHandler}/>
         </div>
         <div className={css(filters.formControl)}>
           <label className={css(filters.labelControl)} htmlFor="count">Количество:</label>
@@ -110,8 +143,21 @@ class Filters extends Component {
 
 function mapStateToProps(state) {
   return {
-    filter: state.filter
+    filter: state.filter,
+    countries: state.vkdb.countries,
+    cities: state.vkdb.cities
   }
 }
 
-export default connect(mapStateToProps, { getPeople, setOffset, changeCount, changeAgeFrom, changeAgeTo, changeGender })(Filters);
+export default connect(mapStateToProps, {
+  getPeople,
+  setOffset,
+  changeCount,
+  changeAgeFrom,
+  changeAgeTo,
+  changeGender,
+  getCountries,
+  changeCountry,
+  getCities,
+  changeCity
+})(Filters);

@@ -1,6 +1,18 @@
 import { StyleSheet } from 'aphrodite/no-important'
 
-import { mainPadding, mainBorRadius, mainShadow, cardsBg, loadingColor, btnMoreBg, btnMoreColor } from '../const_styl'
+import {
+  mainPadding,
+  mainBorRadius,
+  mainShadow,
+  cardsBg,
+  loadingColor,
+  btnMoreColor,
+  btnMoreBgHover,
+  btnColorHover,
+  countColor,
+  countBg,
+  trans
+} from '../const_styl'
 
 const rotateKeyframes = {
   '0%': {
@@ -48,18 +60,22 @@ const cards = StyleSheet.create({
     alignItems: 'center'
   },
   btnMore: {
-    border: 'none',
-    backgroundColor: btnMoreBg,
+    border: `1px solid ${btnMoreColor}`,
+    backgroundColor: `transparent`,
     color: btnMoreColor,
     padding: mainPadding,
-    width: '60%',
+    width: '100%',
     fontSize: '16px',
     borderRadius: mainBorRadius,
     textAlign: 'center',
     outline: 'none',
+    transition: trans,
     ':hover': {
       cursor: 'pointer',
-      outline: 'none'
+      outline: 'none',
+      color: btnColorHover,
+      background: btnMoreBgHover,
+      border: `1px solid ${btnColorHover}`
     },
     'focus': {
       outline: 'none'
@@ -70,6 +86,18 @@ const cards = StyleSheet.create({
     ':checked': {
       outline: 'none'
     }
+  },
+  countTitle: {
+    color: countColor,
+    backgroundColor: countBg,
+    width: '100%',
+    // border: `1px solid ${countColor}`,
+    marginBottom: '10px',
+    boxSizing: 'border-box',
+    padding: mainPadding,
+    borderRadius: mainBorRadius,
+    fontSize: '16px'
+
   }
 });
 
