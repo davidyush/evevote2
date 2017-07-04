@@ -1,6 +1,6 @@
 import { StyleSheet } from 'aphrodite/no-important'
 
-import { cardsTitleBg, mainBorRadius, mainShadow, mainPadding, trans, removeColor } from '../const_styl'
+import { cardsTitleBg, mainBorRadius, mainShadow, mainPadding, trans, removeColor, cardsColor } from '../const_styl'
 
 const card = StyleSheet.create({
   cardWrapper: {
@@ -31,21 +31,21 @@ const card = StyleSheet.create({
   cardTitle: {
     borderBottomLeftRadius: mainBorRadius,
     borderBottomRightRadius: mainBorRadius,
-    color: 'white',
+    color: cardsColor,
     padding: mainPadding,
-    cardsTitleBg
+    backgroundColor: cardsTitleBg
   },
   remove: {
     backgroundColor: removeColor,
     width: '20px',
     height: '20px',
     fontSize: '10px',
-    color: 'white',
+    color: cardsColor,
     position: 'absolute',
     top: '5px',
     right: '5px',
     borderRadius: '50%',
-    lineHeight: '17px',
+    lineHeight: '20px',
     textAlign: 'center',
     border: 'none',
     transition: trans,

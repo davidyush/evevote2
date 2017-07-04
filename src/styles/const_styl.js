@@ -31,10 +31,13 @@ export const appBg = bgYellow;
 //cards
 export const cardsBg = yellow;
 export const loadingColor = teal;
+export const btnMoreBg = teal;
+export const btnMoreColor = white;
 
 //card
 export const removeColor = red;
 export const cardsTitleBg = teal;
+export const cardsColor = white;
 
 //filters
 export const filtersBg = yellow;

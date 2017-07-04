@@ -40,7 +40,7 @@ class VkMain extends Component {
           </div>
           <Filters/>
           <div className={css(vkmain.btnWrap, vkmain.vkGo)}>
-            <Link onClick={this.clone} className={css(vkmain.vkBtn)} to='/vkvote'>vote</Link>
+            <Link onClick={this.clone} className={css(vkmain.vkBtn)} to='/vkvote'>Vote</Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'aphrodite/no-important'
 
-import { mainPadding, mainBorRadius, mainShadow, cardsBg, loadingColor } from '../const_styl'
+import { mainPadding, mainBorRadius, mainShadow, cardsBg, loadingColor, btnMoreBg, btnMoreColor } from '../const_styl'
 
 const rotateKeyframes = {
   '0%': {
@@ -19,17 +19,14 @@ const cards = StyleSheet.create({
     boxShadow: mainShadow,
     minHeight: '440px',
     borderRadius: mainBorRadius,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   cards: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start'
   },
   wrapLoading: {
     width: '100%',
+    height: '440px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
@@ -44,6 +41,35 @@ const cards = StyleSheet.create({
     animationDuration: '1s',
     animationTimingFunction: 'linear',
     animationIterationCount: 'infinite'
+  },
+  btnMoreWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  btnMore: {
+    border: 'none',
+    backgroundColor: btnMoreBg,
+    color: btnMoreColor,
+    padding: mainPadding,
+    width: '60%',
+    fontSize: '16px',
+    borderRadius: mainBorRadius,
+    textAlign: 'center',
+    outline: 'none',
+    ':hover': {
+      cursor: 'pointer',
+      outline: 'none'
+    },
+    'focus': {
+      outline: 'none'
+    },
+    ':active': {
+      outline: 'none'
+    },
+    ':checked': {
+      outline: 'none'
+    }
   }
 });
 

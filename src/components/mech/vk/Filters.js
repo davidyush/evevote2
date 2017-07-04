@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { changeCount, changeAgeFrom, changeAgeTo, changeGender } from '../../../actions/filter_actions'
-import { getPeople } from '../../../actions/people_actions'
+import { getPeople, setOffset } from '../../../actions/people_actions'
+
 
 import { css } from 'aphrodite/no-important'
 import filters from '../../../styles/vk/filters_styl'
@@ -11,10 +12,11 @@ class Filters extends Component {
 
   changeCountHandler = (e) => {
     const count = Number(e.target.value) || '';
-    const { filter, changeCount, getPeople } = this.props;
+    const { filter, changeCount, getPeople, setOffset } = this.props;
     // validate here
 
     changeCount(count);
+    setOffset(count);
     setTimeout(() => {
       getPeople({ ...filter, count: count });
     }, 1000);
@@ -87,11 +89,11 @@ class Filters extends Component {
         </div>
         <div className={css(filters.formControl)}>
           <label className={css(filters.labelControl)} htmlFor="age-from">Возраст от:</label>
-          <input className={css(filters.inputControl)} value={filter.ageFrom} type="number" id='age-from' onChange={this.changeAgeFromHandler}/>
+          <input className={css(filters.inputControl)} value={filter.age_from} type="number" id='age-from' onChange={this.changeAgeFromHandler}/>
         </div>
         <div className={css(filters.formControl)}>
           <label className={css(filters.labelControl)} htmlFor="age-to">Возраст до:</label>
-          <input className={css(filters.inputControl)} value={filter.ageTo} type="number" id='age-to' onChange={this.changeAgeToHandler}/>
+          <input className={css(filters.inputControl)} value={filter.age_to} type="number" id='age-to' onChange={this.changeAgeToHandler}/>
         </div>
         <div className={css(filters.formControl)}>
           <label className={css(filters.labelControl)}>Пол:</label>
@@ -112,4 +114,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { getPeople, changeCount, changeAgeFrom, changeAgeTo, changeGender })(Filters);
+export default connect(mapStateToProps, { getPeople, setOffset, changeCount, changeAgeFrom, changeAgeTo, changeGender })(Filters);

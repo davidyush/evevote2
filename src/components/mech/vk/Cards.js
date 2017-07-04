@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
-import { removePerson } from '../../../actions/people_actions'
+import { removePerson, offsetPeople } from '../../../actions/people_actions'
 
 import Card from './Card'
 
@@ -14,6 +14,12 @@ class Cards extends PureComponent {
       str = str.slice(0,16) + '..';
     }
     return str;
+  }
+
+  offsetHadnler = (e) => {
+    e.preventDefault();
+    const { filter, offsetPeople, offsetNum } = this.props;
+    offsetPeople(filter, offsetNum, 10);
   }
 
   render() {
@@ -30,6 +36,9 @@ class Cards extends PureComponent {
    } else if(people && people[0]) {
       return (
         <section className={css(cards.cardsWrapper)}>
+          <div>
+            <h1>Count: {people.length}</h1>
+          </div>
           <div className={css(cards.cards)}>
             { people.map(person => (
                 <Card
@@ -41,6 +50,9 @@ class Cards extends PureComponent {
                   img={person.photo_200 || person.photo_100}
                   removePerson={removePerson} />
             ))}
+          </div>
+          <div className={css(cards.btnMoreWrapper)}>
+            <button className={css(cards.btnMore)} onClick={this.offsetHadnler}>More</button>
           </div>
         </section>
       )
@@ -57,8 +69,10 @@ class Cards extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    loading: state.people.loading
+    loading: state.people.loading,
+    offsetNum: state.people.offsetNum,
+    filter: state.filter
   }
 }
 
-export default connect(mapStateToProps, { removePerson })(Cards);
+export default connect(mapStateToProps, { removePerson, offsetPeople })(Cards);

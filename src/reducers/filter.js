@@ -8,12 +8,12 @@ import {
 
 const initialState = {
   q: '',
-  count: 30,
+  count: 20,
   has_photo: 1,
   city: '',
   country: '',
-  age_from: '',
-  age_to: '',
+  age_from: 0,
+  age_to: 120,
   sex: 0,
   fields: [ 'photo_200','photo_100','city','country',
             'bdate', 'home_town','sex', 'relation',
