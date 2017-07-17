@@ -31,9 +31,14 @@ const card = StyleSheet.create({
   cardTitle: {
     borderBottomLeftRadius: mainBorRadius,
     borderBottomRightRadius: mainBorRadius,
-    color: cardsColor,
     padding: mainPadding,
     backgroundColor: cardsTitleBg
+  },
+  cardText: {
+    color: cardsColor,
+    ':hover': {
+      textDecoration: 'underline'
+    }
   },
   remove: {
     backgroundColor: removeColor,

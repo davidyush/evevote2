@@ -73,6 +73,12 @@ export const btnHover = teal;
 export const mainBg = yellow;
 export const mainColor = black;
 
+//dropdown
+export const dropColor = black;
+export const dropBg = yellow;
+export const dropBgHover = teal;
+export const dropColorHover = white;
+
 
 //lighten(rgb(204, 18, 48), 30%) = #ef4661 (239, 70, 97)
 

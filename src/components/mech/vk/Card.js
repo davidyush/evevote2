@@ -11,14 +11,14 @@ class Card extends PureComponent {
   }
 
   render() {
-    const { fullName, img } = this.props;
+    const { fullName, img, uid } = this.props;
     return (
       <div className={css(card.cardWrapper)}>
         <div className={css(card.cardImgWrapper)}>
           <img className={css(card.cardImg)} src={img} alt='человечишко'/>
         </div>
         <div className={css(card.cardTitle)}>
-          <p className='card-text'>{fullName}</p>
+          <a rel="noopener noreferrer" target="_blank" href={`https://vk.com/id${uid}`} className={css(card.cardText)}>{fullName}</a>
         </div>
         <button className={css(card.remove)} onClick={this.remove}>X</button>
       </div>

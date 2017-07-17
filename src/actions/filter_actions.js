@@ -5,7 +5,8 @@ import {
   CHANGE_AGE_TO_FILTER,
   CHANGE_GENDER,
   CHANGE_COUNTRY_FILTER,
-  CHANGE_CITY_FILTER
+  CHANGE_CITY_FILTER,
+  CHANGE_RELATION
 } from '../constants/filter_constants'
 
 export function changeCount(count) {
@@ -55,5 +56,12 @@ export function changeCity(cityId) {
   return {
     type: CHANGE_CITY_FILTER,
     payload: cityId
+  }
+}
+
+export function changeRelation(relationId) {
+  return {
+    type: CHANGE_RELATION,
+    payload: relationId
   }
 }

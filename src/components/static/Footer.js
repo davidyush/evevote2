@@ -5,7 +5,7 @@ import footer from '../../styles/footer_styl'
 
 const Footer = (props) => (
   <footer className={css(footer.footer)}>
-    <h2>footer</h2>
+    <h2>You are what you choose</h2>
   </footer>
 )
 

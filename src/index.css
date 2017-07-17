@@ -12,7 +12,9 @@ img,
 footer,
 input,
 button,
-p {
+p,
+ul,
+li {
   margin: 0;
   padding: 0;
   font-family: 'PT Sans Narrow';
@@ -35,6 +37,10 @@ ul {
 
 #root { height: 100%; }
 
+input:focus {
+  outline: none;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -42,4 +48,8 @@ input::-webkit-inner-spin-button {
 
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
 }

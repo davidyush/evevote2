@@ -5,7 +5,8 @@ import {
   CHANGE_AGE_TO_FILTER,
   CHANGE_GENDER,
   CHANGE_COUNTRY_FILTER,
-  CHANGE_CITY_FILTER
+  CHANGE_CITY_FILTER,
+  CHANGE_RELATION
 } from '../constants/filter_constants'
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   age_from: '',
   age_to: '',
   sex: 0,
+  relation: '',
   fields: [ 'photo_200','photo_100','city','country',
             'bdate', 'home_town','sex', 'relation',
             'photo_400_orig','has_photo', 'about', 'status'
@@ -39,6 +41,8 @@ export default function filter(state = initialState, action) {
       return { ...state, country: action.payload };
     case CHANGE_CITY_FILTER:
       return { ...state, city: action.payload };
+    case CHANGE_RELATION:
+      return { ...state, relation: action.payload };
     default:
       return state;
   }
